@@ -26,7 +26,7 @@ def setup_from_file(fname):
     config = SafeConfigParser()
     config.read(fname)
 
-    settings = dict(config.items('DEFAULT'))
+    settings = dict(config.items('app:main'))
     setup(settings)
 
 def commit_on_success(func, *arg, **kw):
@@ -43,7 +43,7 @@ def commit_on_success(func, *arg, **kw):
         return result
 
 # bind the Session to the current request
-Session = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
+Session = scoped_session(sessionmaker())
 
 class Base(object):
     """SQLAlchemy Base class, all common functionality located here

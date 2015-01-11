@@ -18,6 +18,7 @@ requires = [
     'zope.sqlalchemy',
     'waitress',
     'cornice',
+    'psycopg2',
     ]
 
 setup(name='pyirl-todomvc',
