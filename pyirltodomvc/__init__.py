@@ -14,6 +14,7 @@ def main(global_config, **settings):
 
     # SQLAlchemy setup
     setup(settings)
+    config.add_renderer('json_sqla', factory='pyirltodomvc.json_renderer.SQLAlchemyJSONRenderFactory')
 
     # Static/HTML route config
     config.add_static_view('static', 'static', cache_max_age=3600)
