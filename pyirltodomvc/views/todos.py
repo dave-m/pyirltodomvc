@@ -22,7 +22,7 @@ def format_todo(inst):
 
 
 @resource(collection_path='/todos', path='/todos/{id}')
-class Todos(object):
+class TodoResource(object):
     """Represent a ``Todo``"""
 
     def __init__(self, request):
@@ -34,7 +34,7 @@ class Todos(object):
         return {'todos': [format_todo(i) for i in
                           Session.query(Todo).all()]}
 
-    @view(renderer='json')
+    @view(renderer='json_sqla')
     def get(self):
         """Get one"""
         id_ = int(self.request.matchdict['id'])
@@ -42,7 +42,7 @@ class Todos(object):
         if not inst:
             request.matchdict = None
             return HTTPNotFound()
-        return format_todo(inst)
+        return inst
 
     @view(schema=TodoEnvelope)
     def collection_post(self):
