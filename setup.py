@@ -19,6 +19,7 @@ requires = [
     'waitress',
     'cornice',
     'psycopg2',
+    'colander'
     ]
 
 setup(name='pyirl-todomvc',

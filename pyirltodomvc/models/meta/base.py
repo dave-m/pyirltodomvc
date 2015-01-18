@@ -18,6 +18,7 @@ def setup(config):
     global engine
     engine = engine_from_config(config, "sqlalchemy.")
     Session.configure(bind=engine)
+    return engine
 
 def setup_from_file(fname):
     """Setup the SQLAlchemy configuration from a config file
